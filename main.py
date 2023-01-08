@@ -63,7 +63,7 @@ def edit_post(id):
     else:
         try:
             post = Post.query.get(id)
-            return render_template("edit.html") 
+            return render_template("edit.html", post=post) 
         except Exception as error:
             print("Error", error)
            
