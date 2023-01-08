@@ -30,6 +30,16 @@ def add_post():
         db.session.commit()
     except Exception as error:
         print("Error", error)
+        
+        
+@app.route("/post/<id>/del", methods=["GET"])
+def delete_post(id):
+    try:
+        post = Post.query.get(id)
+        db.session.delete(post)
+        db.session.commit()
+    except Exception as error:
+        print("Error", error)
        
     
 app.run(debug=True)
