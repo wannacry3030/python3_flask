@@ -69,4 +69,9 @@ def edit_post(id):
            
         return redirect(url_for("home"))
     
+@app.route("/api/posts")
+def api_list_posts():
+    posts = Post.query.all()
+    return jsonify({"helloworld":"123"})
+
 app.run(debug=True)
