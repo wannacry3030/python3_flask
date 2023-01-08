@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for, jsonify, make_response
 from flask_sqlalchemy import SQLAlchemy
 
 #essa variavel recebe o parametro flask
@@ -31,6 +31,8 @@ def add_post():
     except Exception as error:
         print("Error", error)
         
+    return redirect(url_for("home"))
+        
         
 @app.route("/post/<id>/del", methods=["GET"])
 def delete_post(id):
@@ -41,6 +43,7 @@ def delete_post(id):
     except Exception as error:
         print("Error", error)
        
+    return redirect(url_for("home"))
     
 @app.route("/post/<id>/edit", methods=["POST","GET"])
 def edit_post(id):
@@ -55,6 +58,8 @@ def edit_post(id):
         except Exception as error:
             print("Error", error)
             
+        return redirect(url_for("home"))
+            
     else:
         try:
             post = Post.query.get(id)
@@ -62,5 +67,6 @@ def edit_post(id):
         except Exception as error:
             print("Error", error)
            
+        return redirect(url_for("home"))
     
 app.run(debug=True)
