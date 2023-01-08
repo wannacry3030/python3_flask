@@ -6,7 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
-    <h1>BEM VINDO {{nome}}</h1>
+  <br>
+    <form method="POST" action="{{ url_for('add_post')}}">
+     <label>Title</label></br>
+      <input name="title" /><br></br>
+      <label>Author</label></br>
+      <input name="author" ></input><br></br>
+      <label>Content</label></br>
+      <textarea name="content"></textarea><br></br>
+     <input type="submit" value="Submit">
+    </form>
+    {% for post in posts %} 
+        <h2>{{post.title}}</h2></br>
+        <h2>{{post.author}}</h2></br>
+        <h2>{{post.content}}</h2></br>
+        <br></br><hr>
+    {% endfor %}
   </body>
 </html>
