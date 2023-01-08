@@ -42,4 +42,25 @@ def delete_post(id):
         print("Error", error)
        
     
+@app.route("/post/<id>/edit", methods=["POST","GET"])
+def edit_post(id):
+    if request.method == "POST":
+        try:
+            post = Post.query.get(id)
+            form = request.form
+            post.title = form["title"]
+            post.content = form["content"]
+            post.author = form["author"]
+            db.session.commit()
+        except Exception as error:
+            print("Error", error)
+            
+    else:
+        try:
+            post = Post.query.get(id)
+            return render_template("edit.html") 
+        except Exception as error:
+            print("Error", error)
+           
+    
 app.run(debug=True)
