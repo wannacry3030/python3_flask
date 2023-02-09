@@ -9,12 +9,12 @@
   <br>
     <form method="POST" action="{{ url_for('add_post')}}">
      <label>Title</label></br>
-      <input name="title" /><br></br>
+      <input name="title" ></input><br>
       <label>Author</label></br>
-      <input name="author" ></input><br></br>
+      <input name="author" ></input><br>
       <label>Content</label></br>
-      <textarea name="content"></textarea><br></br>
-     <input type="submit" value="Submit">
+      <textarea name="content"></textarea><br>
+     <input type="submit" value="Submit"></input>
     </form>
     {% for post in posts %} 
         <h2>{{post.author}}</h2>
